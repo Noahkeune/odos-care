@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odos Care — Central Queensland NDIS Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1A2B4A;
+    --navy-dark: #101d33;
+    --navy-light: #243a60;
+    --white: #f5f2ec;
+    --offwhite: #eae7e0;
+    --muted: #8a9bb5;
+    --text: #1a1a1a;
+    --border: rgba(26,43,74,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #fff;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--navy);
+    border-bottom: 1px solid var(--navy-light);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--white) !important;
+    color: var(--navy) !important;
+    padding: 0.45rem 1.2rem !important;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 7rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: 'ODOS';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22vw;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--offwhite); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ODOS MEANING */
+  .meaning {
+    background: var(--offwhite);
+    padding: 5rem 3rem;
+  }
+
+  .meaning-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .meaning-greek {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 6rem);
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .meaning-greek span {
+    display: block;
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .meaning-body p {
+    margin-bottom: 1.2rem;
+    color: #444;
+  }
+
+  .acronym-list {
+    list-style: none;
+    margin-top: 2rem;
+  }
+
+  .acronym-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .acronym-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    min-width: 2rem;
+    line-height: 1;
+  }
+
+  .acronym-word {
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .acronym-desc {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 6rem 3rem;
+    background: #fff;
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--navy);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+  }
+
+  .about-body p {
+    margin-bottom: 1.2rem;
+    color: #444;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--navy);
+    padding: 6rem 3rem;
+  }
+
+  .services-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    margin-bottom: 3rem;
+  }
+
+  .services-header .section-label { color: var(--muted); }
+  .services-header .section-heading { color: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .service-card {
+    background: var(--navy);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--navy-light); }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .service-title {
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* WHO WE WORK WITH */
+  .audience {
+    padding: 6rem 3rem;
+    background: #fff;
+  }
+
+  .audience-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .audience-list {
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .audience-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    color: #444;
+    display: flex;
+    gap: 0.8rem;
+    align-items: baseline;
+  }
+
+  .audience-list li::before {
+    content: '→';
+    color: var(--navy);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* WORKERS */
+  .workers {
+    background: var(--offwhite);
+    padding: 6rem 3rem;
+  }
+
+  .workers-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .workers-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .workers-body p {
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .req-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  .req-card-title {
+    font-weight: 500;
+    color: var(--navy);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .req-card-desc {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .apply-form {
+    margin-top: 3rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .apply-form h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-group label {
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: #fff;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--navy);
+  }
+
+  .form-group textarea { height: 100px; resize: vertical; }
+
+  .form-submit {
+    margin-top: 1.5rem;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--navy-dark); }
+
+  .form-success {
+    display: none;
+    padding: 1.5rem;
+    background: #edf7f0;
+    border: 1px solid #b3dfc1;
+    border-radius: 2px;
+    color: #1a5c34;
+    margin-top: 1rem;
+  }
+
+  /* REFERRALS */
+  .referrals {
+    background: var(--navy);
+    padding: 6rem 3rem;
+  }
+
+  .referrals-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .referrals-header {
+    margin-bottom: 2rem;
+  }
+
+  .referrals-header .section-label { color: var(--muted); }
+  .referrals-header .section-heading { color: var(--white); }
+
+  .referrals-body p {
+    color: var(--muted);
+    max-width: 680px;
+    margin-bottom: 1rem;
+  }
+
+  .referrals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+
+  .referral-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.4rem;
+    border-radius: 2px;
+  }
+
+  .referral-card-title {
+    font-weight: 500;
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .referral-card-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .btn-referral {
+    display: inline-block;
+    background: var(--white);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .btn-referral:hover { background: var(--offwhite); }
+
+  /* REFERRALS */
+  .contact {
+    background: var(--navy);
+    padding: 6rem 3rem;
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-body {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .contact-row-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-row-value {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-dark);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .meaning-inner, .about-inner, .audience-inner,
+    .workers-header, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .meaning, .about, .services, .audience, .workers, .contact { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Odos Care</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#referrals">Referrals</a></li>
+    <li><a href="#workers">Work With Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">NDIS Disability Support — Central Queensland</p>
+    <h1>Your road to independence starts here.</h1>
+    <p class="hero-sub">Odos Care supports young people aged 16–40 in building real independence, life skills, and a future they're proud of.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Support</a>
+      <a href="#workers" class="btn-outline">Join the Team</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">16–40</span>
+        <span class="hero-stat-label">Age Range</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">CQ</span>
+        <span class="hero-stat-label">Central Queensland</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">NDIS</span>
+        <span class="hero-stat-label">Disability Support</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">2026</span>
+        <span class="hero-stat-label">Est.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ODOS MEANING -->
+<section class="meaning" id="meaning">
+  <div class="meaning-inner">
+    <div>
+      <div class="meaning-greek">ὁδός<span>odos — Greek</span></div>
+    </div>
+    <div class="meaning-body">
+      <p>In ancient Greek, <em>odos</em> means road, path, journey, or method. It's the word behind "exodus" — a way out — and "method" — a path through something. We chose it deliberately.</p>
+      <p>Because that's what we believe in: that every person deserves a clear path forward, not just support for the sake of it.</p>
+      <ul class="acronym-list">
+        <li>
+          <span class="acronym-letter">O</span>
+          <div><span class="acronym-word">Opportunity</span><br><span class="acronym-desc">Opening doors that others have left closed</span></div>
+        </li>
+        <li>
+          <span class="acronym-letter">D</span>
+          <div><span class="acronym-word">Direction</span><br><span class="acronym-desc">Working toward goals that actually matter to you</span></div>
+        </li>
+        <li>
+          <span class="acronym-letter">O</span>
+          <div><span class="acronym-word">Ownership</span><br><span class="acronym-desc">You lead your life — we support the journey</span></div>
+        </li>
+        <li>
+          <span class="acronym-letter">S</span>
+          <div><span class="acronym-word">Support</span><br><span class="acronym-desc">Real, consistent, human support when you need it</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="section-label">Our Story</p>
+      <h2 class="section-heading">Built from the ground up in Rockhampton.</h2>
+    </div>
+    <div class="about-body">
+      <p>Odos Care was founded by Noah Keune — a Rockhampton local who has worked directly with young people navigating disability, mental health, and the challenge of building an independent life.</p>
+      <p>He started Odos Care because he saw a gap. Not just in services, but in the way services were delivered. Too often, support felt transactional. Participants were managed rather than listened to. Goals were ticked off rather than actually pursued.</p>
+      <p>Odos Care exists to do it differently. We work with people, not for them. We show up, we follow through, and we genuinely care about what happens next.</p>
+      <p>Based in Central Queensland and servicing the Rockhampton to Gladstone corridor, we're a disability support provider built around real relationships and real outcomes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-heading">Our Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Daily Living & Independence Skills</div>
+        <p class="service-desc">Cooking, cleaning, budgeting, time management — the practical foundations of living independently.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Community Access & Participation</div>
+        <p class="service-desc">Getting out, connecting with community, accessing services, and building a social life.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Transport Support</div>
+        <p class="service-desc">Getting participants to appointments, work, study, and social activities safely and reliably.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Social & Recreational Support</div>
+        <p class="service-desc">Supporting participation in hobbies, sports, and social groups that build wellbeing and connection.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Employment & Study Support</div>
+        <p class="service-desc">Helping participants find, prepare for, and maintain work or education pathways.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">Life Skills Development</div>
+        <p class="service-desc">Building confidence, decision-making, and self-management skills for long-term independence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="audience" id="audience">
+  <div class="audience-inner">
+    <div>
+      <p class="section-label">Who We Work With</p>
+      <h2 class="section-heading">Young people ready to build something real.</h2>
+    </div>
+    <div>
+      <p style="color:#444; margin-bottom:1.5rem;">We work with NDIS participants aged 16–40 across Central Queensland who are ready to take steps toward independence — whatever that looks like for them.</p>
+      <ul class="audience-list">
+        <li>Young people transitioning from school to adult life</li>
+        <li>Participants wanting to live more independently</li>
+        <li>People building toward employment or study</li>
+        <li>Those looking to strengthen community connections</li>
+        <li>Participants who want a support worker who actually shows up</li>
+        <li>Families looking for a provider they can trust</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORKERS -->
+<section class="workers" id="workers">
+  <div class="workers-inner">
+    <div class="workers-header">
+      <div>
+        <p class="section-label">Join the Team</p>
+        <h2 class="section-heading">Work With Us</h2>
+      </div>
+      <div class="workers-body">
+        <p>We're building a team of people who actually care. Not workers who clock in and clock out — people who show up, build real relationships, and take pride in the difference they make.</p>
+        <p>If that's you, we want to hear from you.</p>
+      </div>
+    </div>
+    <div class="requirements-grid">
+      <div class="req-card">
+        <div class="req-card-title">NDIS Worker Screening Check</div>
+        <div class="req-card-desc">Current clearance required before commencing</div>
+      </div>
+      <div class="req-card">
+        <div class="req-card-title">Blue Card</div>
+        <div class="req-card-desc">Working with Children Check (Queensland)</div>
+      </div>
+      <div class="req-card">
+        <div class="req-card-title">First Aid Certificate</div>
+        <div class="req-card-desc">Current HLTAID011 or equivalent</div>
+      </div>
+      <div class="req-card">
+        <div class="req-card-title">Driver's Licence</div>
+        <div class="req-card-desc">QLD licence and reliable vehicle required</div>
+      </div>
+      <div class="req-card">
+        <div class="req-card-title">Genuine Passion</div>
+        <div class="req-card-desc">You care about people — that's non-negotiable</div>
+      </div>
+      <div class="req-card">
+        <div class="req-card-title">Availability</div>
+        <div class="req-card-desc">Flexible casual shifts across the week</div>
+      </div>
+    </div>
+
+    <div class="apply-form">
+      <h3>Apply Now</h3>
+      <form id="apply-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="Your phone number">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Your email address">
+          </div>
+          <div class="form-group full">
+            <label>Experience</label>
+            <textarea placeholder="Tell us a bit about your background and why you want to work in disability support..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Do you have a current NDIS Worker Screening Check?</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Yes</option>
+              <option>No, but I'm willing to get one</option>
+              <option>In progress</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Do you have a current Blue Card?</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Yes</option>
+              <option>No, but I'm willing to get one</option>
+              <option>In progress</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+      <div class="form-success" id="form-success">
+        Thanks for applying! Noah will be in touch within a few days.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRALS -->
+<section class="referrals" id="referrals">
+  <div class="referrals-inner">
+    <div class="referrals-header">
+      <p class="section-label">Support Coordinators & LACs</p>
+      <h2 class="section-heading">Looking for a reliable provider in CQ?</h2>
+    </div>
+    <div class="referrals-body">
+      <p>We work closely with support coordinators and local area coordinators across the Rockhampton to Gladstone corridor. If you have a participant aged 16–40 looking to build independence and life skills, we'd love to connect.</p>
+      <p>We're a small, responsive team — which means you'll always deal directly with Noah, not an admin queue. Referrals are handled quickly and we keep coordinators in the loop.</p>
+      <div class="referrals-grid">
+        <div class="referral-card">
+          <div class="referral-card-title">Fast Response</div>
+          <div class="referral-card-desc">Referrals responded to within 24 hours — no waitlists or delays</div>
+        </div>
+        <div class="referral-card">
+          <div class="referral-card-title">Direct Communication</div>
+          <div class="referral-card-desc">You deal directly with the founder, not a call centre</div>
+        </div>
+        <div class="referral-card">
+          <div class="referral-card-title">Progress Updates</div>
+          <div class="referral-card-desc">Regular updates and shift notes so you're always across participant progress</div>
+        </div>
+        <div class="referral-card">
+          <div class="referral-card-title">Rockhampton to Gladstone</div>
+          <div class="referral-card-desc">Servicing participants across the full Central Queensland corridor</div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-referral">Make a Referral</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label" style="color:var(--muted);">Get in Touch</p>
+      <h2>Let's have a real conversation.</h2>
+      <p class="contact-body">Whether you're a participant, a family member, a support coordinator, or someone who wants to join the team — reach out directly. No hold music, no intake forms.</p>
+    </div>
+    <div class="contact-details">
+      <div class="contact-row">
+        <span class="contact-row-label">Founder</span>
+        <span class="contact-row-value">Noah Keune</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">Phone</span>
+        <span class="contact-row-value">0472 555 630</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">Email</span>
+        <span class="contact-row-value">noahk@odoscare.net</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">Location</span>
+        <span class="contact-row-value">Central Queensland</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">Service Area</span>
+        <span class="contact-row-value">Rockhampton to Gladstone</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">NDIS</span>
+        <span class="contact-row-value">Disability Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Odos Care</span>
+  <span class="footer-copy">© 2026 Odos Care — Central Queensland. All rights reserved.</span>
+</footer>
+
+<script>
+  document.getElementById('apply-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.service-card, .req-card, .acronym-list li, .audience-list li').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(12px)';
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
